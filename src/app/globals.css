@@ -121,6 +121,13 @@ input, select { font-family: inherit; font-size: inherit; color: inherit; border
   margin-left: 6px;
   font-size: 9px;
   letter-spacing: 0.15em;
+  transition: all 0.25s ease;
+}
+.bag-count.has-items {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  font-weight: 600;
 }
 
 /* ---------- hero ---------- */
@@ -250,7 +257,29 @@ input, select { font-family: inherit; font-size: inherit; color: inherit; border
   gap: clamp(18px, 2.4vw, 36px) clamp(14px, 1.8vw, 28px);
 }
 
-.card { display: block; }
+/* ---------- typography & headings polish ---------- */
+h1, h2, .display, .hero-title {
+  text-wrap: balance;
+}
+
+/* ---------- touch active states ---------- */
+.card {
+  display: block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.card:active {
+  transform: scale(0.985);
+  opacity: 0.94;
+}
+.btn, .btn-ghost, .chip {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s ease, background 0.25s ease, color 0.25s ease;
+}
+.btn:active, .btn-ghost:active, .chip:active {
+  transform: scale(0.97);
+}
+
 .card-media {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -779,7 +808,23 @@ input, select { font-family: inherit; font-size: inherit; color: inherit; border
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
-  .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 14px var(--pad);
+    gap: 8px;
+    top: 52px;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 9.5px;
+  }
   .grid, .journal-grid, .triptych, .spread, .about-cols, .footer-cols { grid-template-columns: 1fr 1fr; }
   .triptych { min-height: 44vh; }
   .spread.flip img { order: 0; }
