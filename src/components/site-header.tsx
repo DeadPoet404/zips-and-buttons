@@ -13,7 +13,12 @@ const LINKS = [
 
 export function BagCount() {
   const { count } = useCart();
-  return <span className="bag-count">{count}</span>;
+  const hasItems = count > 0;
+  return (
+    <span className={`bag-count ${hasItems ? "has-items" : ""}`} aria-label={`${count} items in bag`}>
+      {count}
+    </span>
+  );
 }
 
 export default function SiteHeader() {
